@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    const p = new URLSearchParams(window.location.search);
+    const report_id = p.get("report_id");
+    const page_id = p.get("page_id");
+    const cuit = p.get("cuit") || "ALL";
+    const ds = ["ds30","ds27","ds68","ds69","ds70"];
+    const params = {};
+    ds.forEach(d => params[`${d}.cuit`] = cuit);
+    window.location.replace(
+      `https://datastudio.google.com/u/0/reporting/${report_id}/page/${page_id}?params=${encodeURIComponent(JSON.stringify(params))}`
+    );
+  </script>
+</head>
+<body>Redirigiendo...</body>
+</html>
